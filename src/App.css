@@ -1,0 +1,145 @@
+.weather {
+  background-color: #498CEC;
+  display: grid;
+  margin: auto;
+  grid-template: repeat(3, 1fr)/repeat(4, 1fr);
+  grid-gap: 10px;
+  max-width: 1366px;
+  height: 1024px;
+  justify-items: center;
+  justify-content: space-between;
+  grid-template-areas:
+  "city city city-list measurement" 
+  "basic basic basic basic" 
+  "wind pressure humidity chance-rain";
+ }
+
+.weather_measurement > div.measurement-box {
+  height: 20px;
+  width: 60px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: skyblue;
+  margin-top: 50%;
+  border-radius: 10px;
+}
+
+.weather_measurement > div.measurement-box > div.celsius {
+  background-color: #304f7a;
+  border-radius: 10px 0 0 10px;
+  text-align: center;
+}
+
+.weather_measurement > div.measurement-box > div.fahrenheit {
+  background-color: #304f7a;
+  border-radius: 0 10px 10px 0;
+  text-align: center;
+}
+.weather_basic > div.weather_basic_info {
+    background-color: brown;
+    display: grid;
+    grid-template-areas:
+    "img temp degree"
+    "description description description";
+    grid-template-rows: 170px 1fr;
+}
+
+.weather_basic_img {
+    background-color: chartreuse;
+    grid-area: img;
+}
+
+.weather_basic_temp {
+    background-color: coral;
+    grid-area: temp;
+}
+
+.weather_basic_temp p {
+    font-size: 150px;
+    margin-top: 1%;
+}
+
+.weather_basic_degree {
+    background-color: darkgreen;
+    grid-area: degree;
+}
+
+.weather_basic_degree p {
+    font-size: 80px;
+    margin-top: 5%;
+}
+
+.weather_basic_description {
+    background-color: darkgrey;
+    grid-area: description;
+}
+
+.weather_city {
+    grid-area: city;
+}
+
+.weather_city_box {
+    display: grid;
+    grid-template-areas:
+    "name name name"
+    "set imgLoc location";
+}
+
+.weather_city_name {
+    grid-area: name;
+}
+
+.weather_city_set {
+    grid-area: set;
+}
+
+.weather_city_img {
+    grid-area: imgLoc;
+}
+
+.weather_city_location {
+    grid-area: location;
+}
+
+.weather_city-list {
+    grid-area: city-list;
+}
+.weather_measurement {
+    grid-area: measurement;
+}
+.weather_basic {
+    grid-area: basic;
+}
+.weather_wind {
+    grid-area: wind;
+}
+.weather_pressure {
+    grid-area: pressure;
+}
+.weather_humidity {
+    grid-area: humidity;
+}
+.weather_chance-rain {
+    grid-area: chance-rain;
+}
+
+.search {
+    width: 579px;
+    height: 97px;
+    border-radius: 5px;
+    background-color: #ffff;
+    text-align: center;
+}
+
+.search input {
+    font-size: 36px;
+    margin-top: 20px;
+    border:none;
+    outline: none;
+}
+
+.search button {
+    border: none;
+    font-size: 36px;
+    color: dodgerblue;
+}
