@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getCities = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/city.list.json')
+    const response = await axios.get('/city.list.json')
     const russianSities  = response.data.filter((sity) => sity.country === 'RU')
     return russianSities
   } catch (e) {

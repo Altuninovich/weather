@@ -2,6 +2,7 @@
     max-width: 1366px;
     margin: 0px auto;
     padding: 20px 15px;
+    color:azure;
 }
 
 .weather {
@@ -118,6 +119,7 @@
 
 .weather_city_set {
     grid-area: set;
+    color: rgb(164, 193, 212);
 }
 
 .weather_city_img {
@@ -126,6 +128,7 @@
 
 .weather_city_location {
     grid-area: location;
+    color: rgb(164, 193, 212);
 }
 
 .weather_measurement {
@@ -138,17 +141,36 @@
     grid-area: wind;
     align-self: center;
 }
+
+.weather_wind p {
+    color: rgb(164, 193, 212);
+}
+
 .weather_pressure {
     grid-area: pressure;
     align-self: center;
 }
+
+.weather_pressure p {
+    color: rgb(164, 193, 212);
+}
+
 .weather_humidity {
     grid-area: humidity;
     align-self: center;
 }
+
+.weather_humidity p {
+    color: rgb(164, 193, 212);
+}
+
 .weather_chance-rain {
     grid-area: chance-rain;
     align-self: center;
+}
+
+.weather_chance-rain p {
+    color: rgb(164, 193, 212);
 }
 
 .search {
