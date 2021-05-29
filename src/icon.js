@@ -4,7 +4,9 @@ import strom from './img/svg/strom.svg';
 import sun from './img/svg/sun@2x.svg';
 import partlyCloudy from './img/svg/partly cloudy.svg';
 
-export const getIcon = () => ({
+export const getIcon = (id) => {
+
+const idIcin = {
     '01d': sun,
     '01n': sun,
     '02d': partlyCloudy,
@@ -22,4 +24,8 @@ export const getIcon = () => ({
     '13n': rain,
     '11d': strom,
     '11n': strom
-})
+}
+
+return idIcin[id]
+
+}

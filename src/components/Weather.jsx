@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 import CityList from './CityList';
 import location from '../img/svg/location.svg';
+import cn from "classnames";
+import {toFahrenheit} from 'celsius';
 
 
 const mapStateToProps = (state) => ({
@@ -29,12 +31,23 @@ const Weather = (props) => {
         name,
         description,
         icon,
-        chanceRain
+        chanceRain,
+        windDirection
     } = props.weatherCity
     const [inputMode, setInputMode] = useState(false)
-    const [city, setCity] = useState()
+    const [modeFahrenheit, setModeFahrenheit] = useState(false)
 
     useEffect(() => getCitiesThunk(), [])
+
+    const btnClassCelsius = cn({
+        'celsius': modeFahrenheit,
+        'celsius-light': !modeFahrenheit
+    })
+
+    const btnClassFahrenheit = cn({
+        'fahrenheit': !modeFahrenheit,
+        'fahrenheit-light': modeFahrenheit
+    })
 
     const Menu = () => {
         return (
@@ -63,15 +76,15 @@ const Weather = (props) => {
 			
 			<div className="weather_measurement">
                 <div className="measurement-box">
-                    <div className="celsius">C</div>
-                    <div className="fahrenheit">F</div>
+                    <div className={btnClassCelsius} onClick={() => setModeFahrenheit(false)}>C</div>
+                    <div className={btnClassFahrenheit} onClick={() => setModeFahrenheit(true)}>F</div>
                 </div>
             </div>
 			<div className="weather_basic">
                 <div className="weather_basic_info">
                     <div className="weather_basic_img"><img src={icon}/></div>
                     <div className="weather_basic_temp">
-                        <p>{temp}</p>
+                        <p>{modeFahrenheit ? toFahrenheit(temp) : temp}</p>
                     </div>
                     <div className="weather_basic_degree">
                         <p>{temp && 'o'}</p>
@@ -81,24 +94,24 @@ const Weather = (props) => {
                     </div>
                 </div>
             </div>
-			<div class="weather_wind">
+			<div className="weather_wind">
                 <div>
                     <p>Ветер</p>
-                    <h2>{speed}</h2>
+                    <h2>{speed && `${speed} м/с, ${windDirection}`}</h2>
                 </div>
                 </div>
 			<div className="weather_pressure">
                 <div>
                     <p>Давление</p>
-                    <h2>{pressure}</h2>
+                    <h2>{pressure && `${pressure} мм рт. ст.`}</h2>
                 </div>
             </div>
 			<div className="weather_humidity">
                 <p>Влажность</p>
-                <h2>{humidity}</h2>            </div>
+                <h2>{humidity && `${humidity}%`}</h2>            </div>
 			<div className="weather_chance-rain">
-                <p>Вероятность</p>
-                <h2>20%</h2>
+                <p>Вероятность дождя</p>
+                <h2>{chanceRain && `${chanceRain}%`}</h2>
             </div>
         </div>
     )

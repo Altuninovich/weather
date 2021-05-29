@@ -9,7 +9,8 @@ const initlState = {
     name: 'Город не выбран',
     description: null,
     icon: null,
-    chanceRain: '10%'
+    chanceRain: null,
+    windDirection: null
 }
 
 const weatherCity = (state = initlState, action) => {

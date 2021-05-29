@@ -1,5 +1,6 @@
 import * as api from "../api/api";
-import {getIcon} from "../icon"
+import {getIcon} from "../icon";
+import {getWindDirection} from "../utils/wind"
 //import {stopSubmit} from "redux-form";
 //import { createAction } from 'redux-actions';
 
@@ -41,16 +42,21 @@ export const getCitiesThunk = () => async (dispatch) => {
 export const getWeatherCityThunk = (idCity) => async (dispatch) => {
     dispatch(togglePreloader(true))
     const response = await api.getWeatherCity(idCity)
-    const icon = getIcon()[response.weather.icon]
+    const weather = response.weather[0]
+    const icon = getIcon(weather.icon)
+    const windDirection = getWindDirection(Number(response.wind.deg))
+    const temp = Math.ceil(response.main.temp)
+    const speed = Math.ceil(response.wind.speed)
     const weatherCity = {
-        temp: response.main.temp,
+        temp: temp,
         pressure: response.main.pressure,
         humidity: response.main.humidity,
-        speed: response.wind.speed,
+        speed: speed,
         name: response.name,
-        description: response.weather.description,
+        description: weather.description,
         icon: icon,
-        chanceRain: '10%'
+        chanceRain: response.clouds.all,
+        windDirection: windDirection
     }
         dispatch(togglePreloader(false))
         dispatch(setWeatherCityGeneralData(response))

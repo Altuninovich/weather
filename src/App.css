@@ -19,24 +19,32 @@
   width: 60px;
   display: grid;
   grid-template-columns: 50% 50%;
-  background-color: skyblue;
   margin-top: 50%;
   border-radius: 10px;
 }
 
 .weather_measurement > div.measurement-box > div.celsius {
-  background-color: #304f7a;
   border-radius: 10px 0 0 10px;
   text-align: center;
 }
 
+.celsius-light {
+    background-color: #bbcde6;
+    border-radius: 10px 0 0 10px;
+    text-align: center;
+}
+
 .weather_measurement > div.measurement-box > div.fahrenheit {
-  background-color: #304f7a;
   border-radius: 0 10px 10px 0;
   text-align: center;
 }
+
+.fahrenheit-light {
+    background-color: #bbcde6;
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+}
 .weather_basic > div.weather_basic_info {
-    background-color: brown;
     display: grid;
     grid-template-areas:
     "img temp degree"
@@ -45,12 +53,10 @@
 }
 
 .weather_basic_img {
-    background-color: chartreuse;
     grid-area: img;
 }
 
 .weather_basic_temp {
-    background-color: coral;
     grid-area: temp;
 }
 
@@ -60,7 +66,6 @@
 }
 
 .weather_basic_degree {
-    background-color: darkgreen;
     grid-area: degree;
 }
 
@@ -70,7 +75,6 @@
 }
 
 .weather_basic_description {
-    background-color: darkgrey;
     grid-area: description;
 }
 
