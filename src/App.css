@@ -9,7 +9,7 @@
   justify-items: center;
   justify-content: space-between;
   grid-template-areas:
-  "city city city-list measurement" 
+  "city city city-mode measurement" 
   "basic basic basic basic" 
   "wind pressure humidity chance-rain";
  }
@@ -76,6 +76,7 @@
 
 .weather_basic_description {
     grid-area: description;
+    margin-top: 15px;
 }
 
 .weather_city {
@@ -105,9 +106,6 @@
     grid-area: location;
 }
 
-.weather_city-list {
-    grid-area: city-list;
-}
 .weather_measurement {
     grid-area: measurement;
 }
