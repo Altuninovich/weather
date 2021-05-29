@@ -1,8 +1,6 @@
 import * as api from "../api/api";
 import {getIcon} from "../icon";
 import {getWindDirection} from "../utils/wind"
-//import {stopSubmit} from "redux-form";
-//import { createAction } from 'redux-actions';
 
 export const togglePreloader = (isFetching) => ({
     type: 'IS_FETCHING',

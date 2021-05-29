@@ -62,13 +62,15 @@ const CityList = (props) => {
 
     return (
         <>
-             <div className="search">
+            <div className="search">  
             <input type='text' value={textForm} onChange={autoComplite} />
             <button onClick={clickHandler}>OK</button>
-            </div>
-            <ul style={{position: 'absolute'}}>
+            <div style={{marginTop: '40px'}}>
+            <ul style={{listStyle: 'none'}}>
             {suitableCities && suitableCities.map((city, i) => <li key={i} onClick={selectCity(city)}>{translitRusEng(city.name,  { engToRus: true })}</li>)}
             </ul>
+            </div>
+            </div>
         </>
     )
 } 

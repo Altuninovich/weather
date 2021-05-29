@@ -1,17 +1,39 @@
+.container {
+    max-width: 1366px;
+    margin: 0px auto;
+    padding: 20px 15px;
+}
+
 .weather {
   background-color: #498CEC;
   display: grid;
   margin: auto;
   grid-template: repeat(3, 1fr)/repeat(4, 1fr);
   grid-gap: 10px;
-  max-width: 1366px;
-  height: 1024px;
   justify-items: center;
   justify-content: space-between;
   grid-template-areas:
   "city city city-mode measurement" 
   "basic basic basic basic" 
   "wind pressure humidity chance-rain";
+ }
+
+ @media (max-width:992px) {
+     .weather {
+        background-color: #498CEC;
+        display: grid;
+        margin: auto;
+        grid-template: repeat(4, 1fr)/repeat(2, 1fr);
+        grid-gap: 10px;
+        justify-items: center;
+        justify-content: space-between;
+        grid-template-areas:
+        "city  measurement" 
+        "basic basic"
+        "basic basic" 
+        "wind pressure" 
+        "humidity chance-rain";
+     }
  }
 
 .weather_measurement > div.measurement-box {
@@ -114,18 +136,23 @@
 }
 .weather_wind {
     grid-area: wind;
+    align-self: center;
 }
 .weather_pressure {
     grid-area: pressure;
+    align-self: center;
 }
 .weather_humidity {
     grid-area: humidity;
+    align-self: center;
 }
 .weather_chance-rain {
     grid-area: chance-rain;
+    align-self: center;
 }
 
 .search {
+    position: absolute;
     width: 579px;
     height: 97px;
     border-radius: 5px;
