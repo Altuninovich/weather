@@ -19,11 +19,12 @@ const CityList = (props) => {
     const {cityList, getWeatherCityThunk, setInputMode} = props
     const [textForm, setTextForm] = useState('')
     const [suitableCities, setSuitableCities] = useState(null)
+
     const autoComplite = (e) => {
         const {value} = e.target
         const valueToUpperCase = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
         const translitRus = translitRusEng(valueToUpperCase)
-        setTextForm(value)
+        setTextForm(valueToUpperCase)
         if (translitRus.length > 3) {
             
             let searchCities = cityList.filter((city) => city.name.substring(0, translitRus.length) == translitRus)
@@ -37,13 +38,13 @@ const CityList = (props) => {
 
     const clickHandler = () => {
         const city = cityList.filter((city) => translitRusEng(textForm) == city.name)
-        console.log(city)
-        city.length > 0 ? getWeatherCityThunk(city[0].id) : alert('sory')
+        city.length > 0 ? getWeatherCityThunk(city[0].id) : alert('не нашлось, попробуйте выбрать из предлагаемого списка.')
         setInputMode(false)
     }
 
     const selectCity = (city) => () => {
         setTextForm(translitRusEng(city.name,  { engToRus: true }))
+        console.log(translitRusEng(city.name,  { engToRus: true }))
         setSuitableCities(null)
     }
 

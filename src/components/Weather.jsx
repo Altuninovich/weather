@@ -66,7 +66,7 @@ const Weather = (props) => {
                     </div>
                 </div>
         )
-    }
+    } 
 
     return (
         <div className="weather">
@@ -76,8 +76,8 @@ const Weather = (props) => {
 			
 			<div className="weather_measurement">
                 <div className="measurement-box">
-                    <div className={btnClassCelsius} onClick={() => setModeFahrenheit(false)}>C</div>
-                    <div className={btnClassFahrenheit} onClick={() => setModeFahrenheit(true)}>F</div>
+                    <div className={btnClassCelsius} onClick={() => temp && setModeFahrenheit(false)}>C</div>
+                    <div className={btnClassFahrenheit} onClick={() => temp && setModeFahrenheit(true)}>F</div>
                 </div>
             </div>
 			<div className="weather_basic">
