@@ -37,26 +37,26 @@ export const getCitiesThunk = () => async (dispatch) => {
         dispatch(setCities(response))
 }
  
-export const getWeatherCityThunk = (idCity) => async (dispatch) => {
+export const getWeatherCityThunk = (cityName) => async (dispatch) => {
     dispatch(togglePreloader(true))
-    const response = await api.getWeatherCity(idCity)
-    const weather = response.weather[0]
+    const data = await api.getWeatherCity(cityName)
+    const weather = data.weather[0]
     const icon = getIcon(weather.icon)
-    const windDirection = getWindDirection(Number(response.wind.deg))
-    const temp = Math.ceil(response.main.temp)
-    const speed = Math.ceil(response.wind.speed)
+    const windDirection = getWindDirection(Number(data.wind.deg))
+    const temp = Math.ceil(data.main.temp)
+    const speed = Math.ceil(data.wind.speed)
     const weatherCity = {
         temp: temp,
-        pressure: response.main.pressure,
-        humidity: response.main.humidity,
+        pressure: data.main.pressure,
+        humidity: data.main.humidity,
         speed: speed,
-        name: response.name,
+        name: data.name,
         description: weather.description,
         icon: icon,
-        chanceRain: response.clouds.all,
+        chanceRain: data.clouds.all,
         windDirection: windDirection
     }
         dispatch(togglePreloader(false))
-        dispatch(setWeatherCityGeneralData(response))
+        dispatch(setWeatherCityGeneralData(data))
         dispatch(setWeatherCity(weatherCity))
 }

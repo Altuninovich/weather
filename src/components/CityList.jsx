@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 import translitRusEng from 'translit-rus-eng';
@@ -19,20 +19,17 @@ const CityList = (props) => {
     const {cityList, getWeatherCityThunk, setInputMode} = props
     const [textForm, setTextForm] = useState('')
     const [suitableCities, setSuitableCities] = useState(null)
-    const [citySelectedFromTheList, setCitySelectedFromTheList] = useState(null)
 
     const autoComplite = (e) => {
         const {value} = e.target
         const valueToUpperCase = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
-        const translitRus = translitRusEng(valueToUpperCase)
         setTextForm(valueToUpperCase)
-        if (translitRus.length > 3) {
-            
-            let searchCities = cityList.filter((city) => city.name.substring(0, translitRus.length) == translitRus)
+        if (valueToUpperCase.length > 2) {
+            console.log(cityList[6].city.substring(0, valueToUpperCase.length))
+            let searchCities = cityList.filter((c) => c.city.substring(0, valueToUpperCase.length) == valueToUpperCase)
             setSuitableCities(searchCities)
-        } 
-        else { 
-            setSuitableCities(null) 
+        } else {
+            setSuitableCities(null)
         }
 
     }
@@ -41,38 +38,31 @@ const CityList = (props) => {
         if (textForm === '') {
             setInputMode(false)
             return
-        }
-        if (citySelectedFromTheList) {
-            getWeatherCityThunk(citySelectedFromTheList.id)
-            setInputMode(false)
-            setCitySelectedFromTheList(null)
-        }
-        else {
-            const city = cityList.filter((city) => translitRusEng(textForm) == city.name)
-            city.length > 0 ? getWeatherCityThunk(city[0].id) : alert('не нашлось, попробуйте выбрать из предлагаемого списка.')
+        } else {
+            getWeatherCityThunk(textForm)
             setInputMode(false)
         }
     }
 
     const selectCity = (city) => () => {
-        setCitySelectedFromTheList(city)
-        setTextForm(translitRusEng(city.name,  { engToRus: true }))
+        setTextForm(city.city)
         setSuitableCities(null)
     }
 
     return (
         <>
-            <div className="search">  
-            <input type='text' value={textForm} onChange={autoComplite} />
-            <button onClick={clickHandler}>OK</button>
-            <div style={{marginTop: '40px'}}>
-            <ul style={{listStyle: 'none'}}>
-            {suitableCities && suitableCities.map((city, i) => <li key={i} onClick={selectCity(city)}>{translitRusEng(city.name,  { engToRus: true })}</li>)}
-            </ul>
-            </div>
+            <div className="search">
+                <input type='text' value={textForm} onChange={autoComplite}/>
+                <button onClick={clickHandler}>OK</button>
+                <div style={{marginTop: '40px'}}>
+                    <ul style={{listStyle: 'none'}}>
+                        {suitableCities && suitableCities.map((c, i) => <li key={i}
+                                                                            onClick={selectCity(c)}>{c.city}</li>)}
+                    </ul>
+                </div>
             </div>
         </>
     )
-} 
+}
 
 export default connect(mapStateToProps, actionCreators)(CityList);
