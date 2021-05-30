@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getCities = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/cities.json')
+    const response = await axios.get('/cities.json')
     return response.data
   } catch (e) {
     throw e
