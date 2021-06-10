@@ -1,7 +1,7 @@
 # WEATHER
  
 
-* Pезультат можно посмотреть тут: https://fast-sierra-16248.herokuapp.com
+*The layout is being finalized. Intermediate result: https://fast-sierra-16248.herokuapp.com
 
 
 ## SETUP
